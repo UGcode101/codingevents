@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> th:fragment="head"
+    <meta charset="UTF-8">
+    <title>Coding Events</title>
+
+    <script th:src="@{script.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}"> <!-- Correct placement of rel="stylesheet" -->
+</head>
+<body>
+<!-- Define the navigation fragment -->
+<div th:fragment="navigation">
+    <ul>
+        <li><a th:href="@{/events}">All Events</a></li>
+        <li><a th:href="@{/events/create}">Create Event</a></li> <!-- Corrected closing curly brace -->
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Events List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"> <!-- Link to your stylesheet -->
+</head>
+<body>
+<h1>Events List</h1>
+<nav th:replace="fragments :: navigation"></nav> <!-- This line includes the navigation fragment -->
+<ul>
+    <li th:each="event : ${events}" th:text="${event}"></li>
+</ul>
+
+<h2>Add a New Event</h2>
+<form action="/events/create" method="post">
+    <label for="eventName">Event Name:</label>
+    <input type="text" id="eventName" name="eventName" required>
+    <input type="submit" value="Add Event">
+</form>
+
+</body>
+</html>
