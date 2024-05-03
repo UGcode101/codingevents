@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Events List</title>
-    <link rel="stylesheet" th:href="@{/styles.css}"> <!-- Link to your stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
-<body>
+<body class="container">
 <h1>Events List</h1>
-<nav th:replace="fragments :: navigation"></nav> <!-- This line includes the navigation fragment -->
-<ul>
-    <li th:each="event : ${events}" th:text="${event}"></li>
-</ul>
+<nav th:replace="navigation :: navigation"></nav>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event}"></td>
+    </tr>
+    </tbody>
+</table>
 
 <h2>Add a New Event</h2>
 <form action="/events/create" method="post">
