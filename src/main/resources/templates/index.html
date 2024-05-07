@@ -4,17 +4,18 @@
 <body class="container">
 
 <header th:replace="fragments :: header"></header>
-<nav th:replace="navigation :: navigation"></nav>
 
 <table class="table">
     <thead>
     <tr>
         <th>Name</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.key}"></td>
+        <td th:text="${event.value}"></td>
     </tr>
     </tbody>
 </table>
