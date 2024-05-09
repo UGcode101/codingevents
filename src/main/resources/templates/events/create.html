@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Event</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-</head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
+<header th:replace="fragments :: header"></header>
+
 <h1>Create Event</h1>
-<nav th:replace="navigation :: navigation"></nav>
 
 <form action="/events/create" method="post">
-    <label for="eventName">Event Name:</label>
-    <input type="text" id="eventName" name="eventName" required>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Event Name:</label>
+        <input type="text" name="Name" class="form-control" required>
+    </div>
 
-    <br><br>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Event Description:</label>
+        <input type="text" name="Description" class="form-control" required>
+    </div>
 
-    <label for="eventDescription">Event Description:</label>
-    <input type="text" id="eventDescription" name="eventDescription" required>
-
-    <br><br>
-
-    <input type="submit" value="Create Event">
+    <input type="submit" value="Create Event" class="btn btn-primary">
 </form>
 
+<br>
+<a href="/events" class="btn btn-secondary">Back to All Events</a>
 </body>
 </html>

@@ -2,23 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-
 <header th:replace="fragments :: header"></header>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="event : ${events}">
-        <td th:text="${event.key}"></td>
-        <td th:text="${event.value}"></td>
-    </tr>
-    </tbody>
-</table>
+<h1>Welcome to the Coding Events Platform</h1>
+<p>Manage your events efficiently with our platform.</p>
 
+<ul>
+    <li><a href="/events" class="btn btn-primary">View All Events</a></li>
+    <li><a href="/events/create" class="btn btn-secondary">Create a New Event</a></li>
+</ul>
 </body>
 </html>

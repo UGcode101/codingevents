@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Events List</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-</head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
-<h1 th:text="${title}"></h1>
-<nav th:replace="navigation :: navigation"></nav>
+<header th:replace="fragments :: header"></header>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="event : ${events}">
-        <td th:text="${event.name}"></td>
-        <td th:text="${event.description}"></td>
-    </tr>
-    </tbody>
-</table>
+<h2>All Events</h2>
+<form action="/events/delete" method="post">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.id}"></td>
+            <td th:text="${event.name}"></td>
+            <td th:text="${event.description}"></td>
+            <td>
+                <input type="checkbox" name="eventIds" th:value="${event.id}" class="form-check-input">
+            </td>
+            <td>
+                <a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-warning">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<h2>Add a New Event</h2>
-<a href="/events/create">Create Event</a>
+    <input type="submit" value="Delete Selected Events" class="btn btn-danger">
+</form>
+
+<a href="/events/create" class="btn btn-primary">Create a new event</a>
 
 </body>
 </html>
