@@ -10,26 +10,26 @@ public class Event {
     private int id;
     private static int nextId = 1;
 
-    @NotBlank
-    @Size(min = 3, max = 50)
+    @NotBlank(message = "Name cannot be blank")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
 
-    @Size(max = 500)
+    @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
-    // Default constructor for creating an event with a unique ID
-    public Event() {
-        synchronized (Event.class) {
-            this.id = nextId;
-            nextId++;
-        }
-    }
+    private String contactEmail;
 
-    // Constructor for creating an event with a name and description
-    public Event(String name, String description) {
+    public Event(String name, String description, String contactEmail) {
         this();
         this.name = name;
         this.description = description;
+        this.contactEmail = contactEmail;
+    }
+
+    public Event() {
+        synchronized (Event.class) {
+            this.id = nextId++;
+        }
     }
 
     public int getId() {
@@ -50,6 +50,14 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
 
     @Override

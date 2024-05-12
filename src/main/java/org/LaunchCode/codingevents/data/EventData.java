@@ -3,18 +3,18 @@ package org.LaunchCode.codingevents.data;
 import org.LaunchCode.codingevents.models.Event;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 
 public class EventData {
 
-    private static final Map<Integer, Event> events = new HashMap<>();
+    private static final Map<Integer, Event> events = new ConcurrentHashMap<>();
 
-    public static Collection<Event> getAll(){
+    public static Collection<Event> getAll() {
         return events.values();
     }
 
-    public static Event getById(int id){
+    public static Event getById(int id) {
         return events.get(id);
     }
 
